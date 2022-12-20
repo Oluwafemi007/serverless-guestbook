@@ -1,13 +1,13 @@
 /**
  * Web application
  */
-const apiUrl = 'https://eu-gb.functions.appdomain.cloud/api/v1/web/e31c0cd8-b5fe-41cc-86a4-cae1e6d87680/guestbook';
+const apiUrl = 'https://eu-gb.functions.cloud.ibm.com/api/v1/namespaces/e31c0cd8-b5fe-41cc-86a4-cae1e6d87680/actions/guestbook';
 const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     return $.ajax({
       type: 'GET',
-      url: `https://eu-gb.functions.appdomain.cloud/api/v1/web/e31c0cd8-b5fe-41cc-86a4-cae1e6d87680/guestbook/entries`,
+      url: `${apiurl}/read-guestbook-entries-sequence.json`,
       dataType: 'json'
     });
   },
@@ -16,7 +16,7 @@ const guestbook = {
     console.log('Sending', name, email, comment)
     return $.ajax({
       type: 'PUT',
-      url: `https://eu-gb.functions.appdomain.cloud/api/v1/web/e31c0cd8-b5fe-41cc-86a4-cae1e6d87680/guestbook/entries`,
+      url: `${apiurl}/save-guestbook-entries-sequence.json`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         name,
